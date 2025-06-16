@@ -1,8 +1,7 @@
-// app/api/send-zap/route.ts
 export async function POST(req: Request) {
   const formData = await req.json();
 
-  const zapierURL = "https://hooks.zapier.com/hooks/catch/23379406/uyj5fm9/";
+  const zapierURL = process.env.NEXT_PUBLIC_ZAPIER_WEBHOOK!;
 
   try {
     const res = await fetch(zapierURL, {
