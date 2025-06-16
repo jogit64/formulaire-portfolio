@@ -59,7 +59,7 @@ const ThankYouPage = () => {
               </li>
               <li className="flex items-start">
                 <span className="inline-block w-2 h-2 bg-blue-500 rounded-full mt-2 mr-3 flex-shrink-0"></span>
-                Préparation d’une proposition personnalisée
+                Préparation d&rsquo;une proposition personnalisée
               </li>
               <li className="flex items-start">
                 <span className="inline-block w-2 h-2 bg-blue-500 rounded-full mt-2 mr-3 flex-shrink-0"></span>
@@ -74,7 +74,7 @@ const ThankYouPage = () => {
               className="inline-flex items-center text-blue-600 hover:text-blue-700 font-medium transition-colors duration-200"
             >
               <ArrowLeft className="w-4 h-4 mr-2" />
-              Retour à l'accueil
+              Retour à l&rsquo;accueil
             </Link>
           </div>
         </div>

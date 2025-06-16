@@ -8,7 +8,6 @@ import {
   Text,
   View,
   StyleSheet,
-  Font,
   Image,
 } from "@react-pdf/renderer";
 import { FormData } from "@/types/form";
@@ -109,7 +108,7 @@ const BriefPDF = ({ data }: { data: FormData }) => {
       <Page size="A4" style={styles.page} wrap>
         {/* Header */}
         <View style={styles.header}>
-          <Image src="/jrenault.png" style={styles.logo} />
+          <Image src="/jrenault.png" style={styles.logo} alt="logo" />
           <View style={styles.titleBlock}>
             <Text style={styles.title}>Synthèse de demande de projet web</Text>
             <Text style={styles.idText}>ID de soumission : {id}</Text>
