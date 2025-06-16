@@ -36,16 +36,17 @@ const Step6: React.FC<Step6Props> = ({
   const sendToZapier = async (formData: FormData) => {
     const zapierURL = "https://hooks.zapier.com/hooks/catch/23379406/uyj5fm9/";
 
-    // Optionnel : activer/désactiver manuellement l’envoi (utile en dev local)
     const isDev =
       typeof window !== "undefined" && window.location.hostname === "localhost";
 
-    // Si tu veux éviter de spammer Zapier pendant tes tests locaux
     if (isDev) {
       console.warn("🟡 Envoi vers Zapier désactivé en local.");
       console.debug("📦 Données simulées :", formData);
       return;
     }
+
+    console.log("🚀 Tentative d'envoi à Zapier avec les données suivantes :");
+    console.table(formData); // plus lisible qu’un gros objet dans certains cas
 
     try {
       const response = await fetch(zapierURL, {
@@ -56,10 +57,13 @@ const Step6: React.FC<Step6Props> = ({
         body: JSON.stringify(formData),
       });
 
+      const resultText = await response.text();
+
       if (!response.ok) {
-        console.error("❌ Échec de l’envoi à Zapier :", await response.text());
+        console.error("❌ Échec de l’envoi à Zapier :", resultText);
       } else {
         console.log("✅ Données envoyées à Zapier !");
+        console.debug("📨 Réponse brute de Zapier :", resultText);
       }
     } catch (err) {
       console.error("❌ Erreur lors de l’envoi à Zapier :", err);
@@ -72,14 +76,19 @@ const Step6: React.FC<Step6Props> = ({
       return;
     }
 
+    console.log("📋 handleSubmit lancé. Données actuelles :");
+    console.debug(data);
+
     // 1. Envoi à Zapier
     await sendToZapier(data);
 
     // 2. Stock local pour PDF
     localStorage.setItem("briefData", JSON.stringify(data));
+    console.log("💾 Données stockées dans localStorage.");
 
     // 3. Redirection
     router.push("/merci");
+    console.log("🔀 Redirection vers la page de remerciement.");
   };
 
   return (
