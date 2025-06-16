@@ -34,39 +34,18 @@ const Step6: React.FC<Step6Props> = ({
   const router = useRouter();
 
   const sendToZapier = async (formData: FormData) => {
-    const zapierURL = "https://hooks.zapier.com/hooks/catch/23379406/uyj5fm9/";
+    const res = await fetch("/api/send-zap", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(formData),
+    });
 
-    const isDev =
-      typeof window !== "undefined" && window.location.hostname === "localhost";
-
-    if (isDev) {
-      console.warn("🟡 Envoi vers Zapier désactivé en local.");
-      console.debug("📦 Données simulées :", formData);
-      return;
-    }
-
-    console.log("🚀 Tentative d'envoi à Zapier avec les données suivantes :");
-    console.table(formData); // plus lisible qu’un gros objet dans certains cas
-
-    try {
-      const response = await fetch(zapierURL, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(formData),
-      });
-
-      const resultText = await response.text();
-
-      if (!response.ok) {
-        console.error("❌ Échec de l’envoi à Zapier :", resultText);
-      } else {
-        console.log("✅ Données envoyées à Zapier !");
-        console.debug("📨 Réponse brute de Zapier :", resultText);
-      }
-    } catch (err) {
-      console.error("❌ Erreur lors de l’envoi à Zapier :", err);
+    if (!res.ok) {
+      console.error("❌ Envoi backend → Zapier échoué");
+    } else {
+      console.log("✅ Envoi backend → Zapier réussi");
     }
   };
 
