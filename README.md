@@ -1,36 +1,60 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+Formulaire projet – Portfolio JohannR.fr
 
-## Getting Started
+Ce projet est un formulaire multi-étapes développé en React et Tailwind, destiné à recueillir les besoins d’un client souhaitant créer ou refondre un site web.
+Il est utilisé en démo sur mon portfolio johannr.fr comme exemple d’outil personnalisé que je peux concevoir pour un indépendant, une PME ou une agence.
+✨ Fonctionnalités
 
-First, run the development server:
+    ✅ Formulaire multi-étapes clair et progressif (6 étapes)
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+    ✅ Collecte des besoins : type de projet, objectifs, fonctionnalités, design, budget…
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+    ✅ Génération PDF automatique du brief à la fin du formulaire
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+    ✅ Envoi des données vers Airtable via Zapier
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+    ✅ Notification automatique par e-mail
 
-## Learn More
+    ✅ Design responsive, UI soignée via TailwindCSS
 
-To learn more about Next.js, take a look at the following resources:
+🔧 Stack technique
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+    Next.js (React)
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+    TailwindCSS pour le design
 
-## Deploy on Vercel
+    Zapier pour connecter le formulaire à Airtable et l’email
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+    Airtable pour stocker les soumissions
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+    React-PDF pour générer un fichier PDF à partir des données utilisateur
+
+🚀 Démo
+
+🧪 Le formulaire est visible ici :
+👉 formulaire-portfolio.vercel.app
+
+📌 Attention : les soumissions via Zapier sont actives temporairement (limites du plan gratuit).
+📁 Organisation du projet
+
+/pages
+index.tsx # Page d’accueil du formulaire
+/components
+FormStep\*.tsx # Étapes 1 à 6 du formulaire
+FormWrapper.tsx # Gestion de la progression et des transitions
+PdfGenerator.tsx # Création et téléchargement du PDF
+/utils
+sendToZapier.ts # Envoi des données à l’API Zapier
+/public
+/assets # Logos, icônes...
+
+📌 À propos
+
+Ce projet me permet de montrer ma capacité à concevoir des outils sur-mesure, mêlant :
+
+    UX claire
+
+    Intégration d’outils no-code comme Zapier
+
+    Génération de documents dynamiques
+
+    Automatisation de la communication (emails, base de données)

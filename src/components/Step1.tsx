@@ -8,7 +8,6 @@ interface Step1Props {
   stepTitles: string[];
   data: FormData;
   onChange: <K extends keyof FormData>(field: K, value: FormData[K]) => void;
-
   onNext: () => void;
 }
 
